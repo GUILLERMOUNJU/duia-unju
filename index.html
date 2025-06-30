@@ -5,17 +5,69 @@
   <title>DUIA – Educación Inteligente</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="styles/base.css" />
+  <style>
+    header.banner {
+      background-color: #00274d;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    header h1 {
+      font-family: "Georgia", serif;
+      font-size: 3rem;
+      color: fuchsia;
+      margin: 0.5rem 0;
+    }
+    .logo {
+      height: 80px;
+      display: block;
+      margin: 0 auto 1rem;
+    }
+    .botones {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .btn {
+      background-color: #d9a400;
+      color: white;
+      padding: 0.8rem 1.6rem;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    main {
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #555;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+    @media screen and (max-width: 600px) {
+      .btn {
+        width: 90%;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="banner">
     <img src="assets/escudo-fi.png" alt="Escudo Facultad de Ingeniería UNJu" class="logo" />
-    <h1 style="color: fuchsia; font-family: 'Georgia', serif;">DUIA</h1>
+    <h1>DUIA</h1>
     <p>Didáctica Universal con Inteligencia Aplicada</p>
+    <small>Desarrollado por Guillermo de la Cámara – Facultad de Ingeniería UNJu</small>
   </header>
 
   <main>
-    <h2>Bienvenido/a al entorno educativo inclusivo del futuro</h2>
-    <p>DUIA es una plataforma accesible, escalable y potenciada por IA, diseñada para transformar la experiencia de aprendizaje.</p>
+    <h2>🌟 Transformando la educación desde el diseño inclusivo y la inteligencia artificial</h2>
+    <p>DUIA es una plataforma educativa accesible y escalable que utiliza IA para potenciar la enseñanza y el aprendizaje, integrando estudiantes y docentes en un entorno equitativo y personalizado.</p>
 
     <div class="botones">
       <a href="asistente-alumno.html" class="btn">👩‍🎓 Ingreso Alumno</a>
@@ -24,7 +76,7 @@
   </main>
 
   <footer>
-    <small>Guillermo de la Cámara para Facultad de Ingeniería – UNJu · DUIA · 2025</small>
+    <small>DUIA · Proyecto público · 2025</small>
   </footer>
 </body>
 </html>
