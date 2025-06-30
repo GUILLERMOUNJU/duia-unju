@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DUIA | Cuestionario Alumno</title>
+  <link rel="stylesheet" href="styles/base.css" />
+  <style>
+    main {
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem;
+      text-align: left;
+    }
+    .pregunta {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-top: 2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .opcion {
+      display: block;
+      margin: 0.5rem 0;
+      padding: 0.8rem;
+      border-radius: 4px;
+      background-color: #d9a400;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      width: 100%;
+    }
+    .modo-selector {
+      margin-bottom: 1rem;
+    }
+    .feedback {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 6px;
+      display: none;
+    }
+    .correcta { background-color: #d4edda; color: #155724; }
+    .incorrecta { background-color: #f8d7da; color: #721c24; }
+    .fundamento {
+      background-color: #fffbe6;
+      padding: 0.8rem;
+      border-left: 4px solid #00274d;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="banner">
+    <img src="assets/escudo-fi.png" alt="Escudo Facultad de Ingeniería" class="logo" />
+    <h1 style="color: fuchsia; font-family: Georgia, serif;">DUIA</h1>
+    <p>Asistente Educativo Inteligente – Estudiante</p>
+  </header>
+
+  <main>
+    <div class="modo-selector">
+      <label for="modo">Modo:</label>
+      <select id="modo" onchange="cambiarModo()">
+        <option value="practica">🧠 Práctica</option>
+        <option value="examen">📝 Examen</option>
+      </select>
+      <button onclick="leerPregunta()" style="float:right;">🔊 Leer en voz alta</button>
+    </div>
+
+    <section class="pregunta">
+      <h2 id="enunciado">¿Qué representa DUIA?</h2>
+      <button class="opcion" onclick="verificar(0)">A. Una guía educativa basada en inteligencia artificial</button>
+      <button class="opcion" onclick="verificar(1)">B. Una materia de ingeniería mecánica</button>
+      <button class="opcion" onclick="verificar(2)">C. Un sistema financiero</button>
+
+      <div id="feedback" class="feedback"></div>
+      <div id="fundamento" class="fundamento"></div>
+    </section>
+  </main>
+
+  <script>
+    let modo = "practica";
+
+    const feedback = document.getElementById("feedback");
+    const fundamento = document.getElementById("fundamento");
+
+    function cambiarModo() {
+      modo = document.getElementById("modo").value;
+      feedback.style.display = "none";
+      fundamento.textContent = "";
+    }
+
+    function leerPregunta() {
+      const texto = document.getElementById("enunciado").innerText;
+      const utterance = new SpeechSynthesisUtterance(texto);
+      utterance.lang = 'es-AR';
+      speechSynthesis.speak(utterance);
+    }
+
+    function verificar(seleccion) {
+      const correcta = 0;
+      if (modo === "examen") {
+        alert("Respuesta registrada.");
+        return;
+      }
+      feedback.style.display = "block";
+      if (seleccion === correcta) {
+        feedback.textContent = "¡Correcto! DUIA es una guía educativa basada en IA.";
+        feedback.className = "feedback correcta";
+        fundamento.textContent = "Ver portada institucional: DUIA integra accesibilidad, IA y pedagogía.";
+      } else {
+        feedback.textContent = "Incorrecto. Volvé a reflexionar en base a la presentación.";
+        feedback.className = "feedback incorrecta";
+        fundamento.textContent = "DUIA se define como una herramienta educativa inteligente, no una materia ni sistema financiero.";
+      }
+    }
+  </script>
+</body>
+</html>
